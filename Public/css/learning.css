@@ -1,0 +1,689 @@
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  }
+
+/* ---------------------------------------------------------------------- */
+  /* Sticky Header Style */
+nav.sticky {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 1000; /* Ensure it stays above other elements */
+  background-color:wheat; /* Add a background to avoid transparency */
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Optional shadow for better visibility */
+  transition: all 0.3s ease; /* Smooth transition for sticky effect */
+}
+
+/* ------------------------------------------------------------------ */
+
+
+
+
+
+  /* Container Styling */
+  .containeer {
+    background-color: antiquewhite;
+    width: 100%;
+  }
+
+  /* Header and Navigation Styling */
+  nav {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-weight: bold;
+    list-style-type: none;
+    font-size: 16px;
+    padding: 10px;
+    background-color: wheat;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+  }
+
+
+  h2 t{
+      padding: 4px 4px 4px;
+  }
+  nav .logo {
+    display: flex;
+    align-items: center;
+    font-size: 25px;
+  }
+
+  nav .logo h2 {
+    
+    margin-left: 10px;
+  }
+
+  nav ul {
+    display: flex;
+    gap: 10px;
+    margin-left: auto;
+    list-style-type: none;
+  }
+
+  nav ul li {
+    display: inline-block;
+    margin: 8px 8px;
+  }
+
+  li a {
+    text-decoration: none;
+    color: black;
+    padding: 10px;
+    transition: 0.5s;
+  }
+
+  li a:hover {
+    color: aliceblue;
+    background-color: rgb(215, 51, 51);
+    border-radius: 5px;
+  }
+
+
+  nav a {
+    text-decoration: none;
+    color: black;
+  }
+
+  h2:hover {
+    color: blueviolet;
+  }
+  h2 img {
+    background-color: aliceblue;
+    border-radius: 45%;
+    transition: 0.5s;
+  }
+
+  h2 img:hover {
+    background-color: rgb(83, 79, 79);
+  }
+
+
+  /* -------------------------------- */
+  .logo h2 {
+    display: flex; /* Enable flexbox */
+    align-items: center; /* Vertically center the items */
+    gap: 10px; /* Adds some space between the image and the text */
+  }
+
+  .logo img {
+    height: 55px;
+    width: 70px;
+  }
+
+  .logo span {
+    font-size: 24px;
+    font-weight: bold;
+  }
+
+  /* ------------------------------ */
+
+
+
+
+  /*-------------------- DROPDOWN MENU --------------------*/
+  .dropbtn {
+    background-color:wheat;
+    color: rgb(0, 0, 0);
+    padding: 10px;
+    font-size: 16px;
+    font-weight: bold;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+
+  .dropdown {
+    position: relative;
+    display: inline-block;
+    
+  }
+
+  .dropdown-content {
+    display: none; /* Default to hidden */
+    position: absolute;
+    right: 0;
+    background-color: #f9f9f9;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+    z-index: 1;
+  }
+
+  .dropdown-content a {
+    color: black;
+    padding: 10px 10px;
+    text-decoration: none;
+    display: block;
+  }
+
+  .dropdown-content a:hover {
+    background-color: #5e5858;
+    color: white;
+  }
+
+  .dropdown:hover .dropdown-content {
+    display: block;
+  }
+
+  .dropdown:hover .dropbtn {
+    background-color: red;
+    color: #f1f1f1;
+  }
+
+  /* Mobile Hamburger Menu */
+  .menu-icon {
+    display: none;
+    cursor: pointer;
+  }
+
+  .menu-icon i {
+    font-size: 30px;
+    color: black;
+  }
+
+  /* Responsive Styles */
+  @media (max-width: 768px) {
+    nav {
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 10px;
+    }
+
+    nav ul {
+        display: none;
+        flex-direction: column;
+        width: 100%;
+        background-color: #fff;
+        padding-top: 20px;
+        margin-top: 20px;
+    }
+
+    nav ul.active {
+        display: flex;
+    }
+
+    nav ul li {
+        text-align: center;
+        width: 100%;
+        margin: 10px 0;
+      
+    }
+
+    /* Ensure the dropdown content is hidden on mobile by default */
+    .dropdown-content {
+        position: relative; /* Make sure dropdown opens under the button */
+        left: 0;
+        width: 100%; /* Full width */
+        display: none; /* Hide on mobile */
+
+    }
+
+    .menu-icon {
+        display: block;
+        
+    }
+
+    /* Adjust the layout of the dropdown button */
+    .dropbtn {
+        display: block;
+        width: 100%;
+        text-align: center;
+        padding: 15px;
+        background-color:white;
+        
+    }
+
+    /* Make sure dropdown only opens on click for mobile */
+    .dropdown.active .dropdown-content {
+        display: block;
+    }
+  }
+
+  @media (max-width: 500px) {
+    h2 {
+        font-size: 30px;
+    }
+  }
+
+
+  /* FEATURED COURSE SECTION CODE */
+
+  .featured-courses {
+  width: 100%;
+  background-color: #f8f9fa;
+  padding: 50px 0;
+  }
+
+  .featured-courses h2 {
+  text-align: center;
+  font-size: 2.5em;
+  margin-bottom: 30px;
+  color: #333;
+  }
+
+  .featured-courses .courses-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px;
+  padding: 0 15px;
+  }
+
+  .featured-courses .course-card {
+  background-color: #fff;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  width: 300px;
+  overflow: hidden;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s, box-shadow 0.3s;
+  }
+
+  .featured-courses .course-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+  }
+
+  .featured-courses .course-card img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  }
+
+  .featured-courses .course-card .course-info {
+  padding: 15px;
+  text-align: center;
+  }
+
+  .featured-courses .course-card .course-info h3 {
+  font-size: 1.5em;
+  margin-bottom: 10px;
+  color: #333;
+  }
+
+  .featured-courses .course-card .course-info p {
+  font-size: 1em;
+  color: #666;
+  margin-bottom: 15px;
+  }
+
+  .featured-courses .course-card .course-info a {
+  display: inline-block;
+  padding: 10px 20px;
+  background-color: #007bff;
+  color: #fff;
+  text-decoration: none;
+  border-radius: 5px;
+  transition: background-color 0.3s;
+  }
+
+  .featured-courses .course-card .course-info a:hover {
+  background-color: #0056b3;
+  }
+
+
+/* --------------------------------------------------------------------------------------------------------- */
+  /* STUDENT REVIWE SECTION CODE HERE    */
+/* Reviews Section Styling */
+.reviews-section {
+  padding: 50px;
+  background-color: #fff;
+  text-align: center;
+}
+
+.section-title {
+  font-size: 2rem;
+  margin-bottom: 30px;
+  color: #333;
+}
+
+/* Reviews Container */
+.reviews-container {
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+  flex-wrap: wrap;
+}
+
+/* Individual Review Card */
+.review-card {
+  background-color: #f2f2f2;
+  border-radius: 8px;
+  padding: 20px;
+  width: 280px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  transition: transform 0.3s ease;
+}
+
+.review-card:hover {
+  transform: translateY(-10px);
+}
+
+/* Reviewer Image */
+.reviewer-img {
+  border-radius: 50%;
+  width: 100px;
+  height: 100px;
+  margin-bottom: 15px;
+}
+
+/* Review Text */
+.review-text {
+  color: #555;
+}
+
+.reviewer-name {
+  font-size: 1.2rem;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.review {
+  font-size: 1rem;
+  margin-bottom: 10px;
+}
+
+.rating {
+  font-size: 1.2rem;
+  color: #f39c12;
+}
+
+
+/*  SCROLLING REVIEW CSS */
+
+.feedback-section {
+  text-align: center;
+  padding: 40px 20px;
+  background-color: #f9f9f9;
+}
+
+.feedback-section h2 {
+  font-size: 2rem;
+  margin-bottom: 20px;
+  color: #333;
+}
+
+/* Feedback container with horizontal scrolling */
+.feedback-container {
+  display: flex;
+  overflow: hidden;
+  position: relative;
+  width: 100%;
+}
+
+.feedback-wrapper {
+  display: flex;
+  animation: scrollFeedbacks 30s linear infinite;
+}
+
+/* Each review card style */
+.feedback-card {
+  min-width: 250px;
+  margin: 0 15px;
+  background: #fff;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  padding: 20px;
+  text-align: center;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  flex-shrink: 0; /* Prevent shrinking on smaller screens */
+}
+
+.feedback-card img {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  margin-bottom: 10px;
+}
+
+.feedback-card .feedback-name {
+  font-size: 1.2rem;
+  font-weight: bold;
+  color: #555;
+}
+
+.feedback-card .feedback-text {
+  font-size: 1rem;
+  color: #777;
+  margin-top: 10px;
+}
+
+/* Scrolling Animation */
+@keyframes scrollFeedbacks {
+  0% {
+      transform: translateX(0);
+  }
+  100% {
+      transform: translateX(-100%);
+  }
+}
+
+/* Pause scrolling on hover */
+.feedback-container.paused {
+  animation-play-state: paused;
+}
+
+/* Responsive Design for smaller screens */
+@media (max-width: 768px) {
+  .feedback-card {
+      min-width: 200px; /* Reduce card size on smaller screens */
+  }
+
+  .feedback-section h2 {
+      font-size: 1.5rem; /* Adjust heading font size */
+  }
+}
+
+@media (max-width: 480px) {
+  .feedback-card {
+      min-width: 150px; /* Even smaller cards for very small screens */
+  }
+
+  .feedback-section h2 {
+      font-size: 1.2rem; /* Further reduce heading size */
+  }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* --------------------------------------------------------------------------------------------------------------- */
+  /* FOOTER DESIGN CSS CODE */
+  .footer {
+  background-color: #333;
+  color: #fff;
+  padding: 20px 0;
+  text-align: center;
+  }
+
+  .footer .footer-links {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 15px;
+  margin-bottom: 15px;
+  }
+
+  .footer .footer-links a {
+  color: #fff;
+  text-decoration: none;
+  font-size: 16px;
+  }
+
+  .footer .footer-links a:hover {
+  color: #00bcd4;
+  text-decoration: underline;
+  }
+
+  .footer .social-icons {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  }
+
+  .footer .social-icons a {
+  color: #fff;
+  font-size: 20px;
+  display: inline-block;
+  transition: transform 0.3s;
+  }
+
+  .footer .social-icons a:hover {
+  transform: scale(1.2);
+  color: #00bcd4;
+  }
+
+  .footer .copyright {
+  margin-top: 15px;
+  font-size: 14px;
+  opacity: 0.8;
+  }
+
+  /* DEMO SECTION CSS CODE  */
+  .video-section {
+  width: 100%;
+  background-color: #f4f4f4;
+  padding: 50px 20px;
+  text-align: center;
+  }
+
+  .video-section h2 {
+  font-size: 2.5em;
+  margin-bottom: 20px;
+  color: #333;
+  }
+
+  .video-section p {
+  font-size: 1.2em;
+  color: #666;
+  margin-bottom: 30px;
+  }
+
+  .video-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  }
+
+  .video-container iframe {
+  width: 80%;
+  max-width: 800px;
+  height: 450px;
+  border: none;
+  border-radius: 10px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  }
+
+  @media (max-width: 768px) {
+  .video-container iframe {
+      width: 100%;
+      height: 300px;
+  }
+  } 
+
+  /* ------------------------------------ */
+  .centered {
+    position: absolute;
+    top: 70%;
+    left: 68%;
+    transform: translate(-50%, -50%);
+    padding: 18px;
+    margin: 10px;
+    font-size: 13px;
+    border-radius: 80px;
+    width: 120px;
+    text-align: center;
+    color: black;
+    font-weight: bold;
+    cursor: pointer;
+    background-color: rgb(234, 83, 133);
+  }
+  .centered:hover{
+    background-color: rgb(245, 0, 82);
+    color: white;
+  }
+  /* ---------------------------------------- */
+
+
+  #header {
+    z-index: 1050; /* Higher than the carousel's z-index */
+    position: relative; /* Ensure it can stack properly */
+  }
+
+  #header.active {
+    position: absolute; /* Change to absolute positioning when menu is open */
+    top: 70px; /* Adjust to match the position of the menu */
+    width: 100%; /* Make sure it covers the width of the screen */
+    background-color: white; /* Add background color for visibility */
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2); /* Optional: Add shadow for better appearance */
+    z-index: 1051; /* Ensure it's above the carousel */
+  }
+
+  /* Ensure the menu icon is visible and functional */
+  .menu-icon {
+    z-index: 1052; /* Higher than the menu */
+  }
+  /* responsive design but 1 error  */
+    
+  @media (max-width: 768px) {
+    .menu-icon {
+        display: block; /* Show the hamburger on small screens */
+        position: absolute;
+        right: 20px; /* Move the icon to the right */
+        top: 20px; /* Add some space from the top */
+        font-size: 30px; /* Adjust the size of the icon */
+    }
+
+    /* Ensure the navigation links align properly for mobile */
+    #header {
+        display: none;
+        width: 100%;
+        flex-direction: column;
+        position: absolute;
+        top: 70px; /* Position the menu below the hamburger */
+        left: 0;
+        background-color: white;
+        box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2); /* Add shadow for dropdown effect */
+    }
+
+    #header.active {
+        display: flex; /* Show the navigation menu when the menu is active */
+    }
+
+    #header li {
+        padding: 10px;
+        text-align: center;
+    }
+  }
+
+  /* Optional: Add styles for dropdown if needed */
+  .dropdown-content {
+    display: none;
+  }
+
+  .dropdown-content.show {
+    display: block;
+  }

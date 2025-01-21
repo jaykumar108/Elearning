@@ -1,0 +1,17 @@
+{
+  "name": "e-learnig-project",
+  "version": "1.0.0",
+  "description": "This is a sample perfect e learning website",
+  "main": "bootstrap.min.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Rahul and Jay",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.21.2",
+    "mongoose": "^8.8.4",
+    "nodemon": "^3.1.9",
+    "path": "^0.12.7"
+  }
+}

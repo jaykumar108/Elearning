@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Signup - E-Learning</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/css/learning.css">
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+    <script src="/bootstrap.min.js"></script>
+    <link rel="icon" type="image/png" href="/css/images/logo_round.png"/>
+    
+</head>
+
+<body>
+  <div class="containeer">
+      <nav>
+          <!-- E-Learning Logo Section -->
+          <a href="E-learning.html" class="logo">
+            <h2>
+                <img src="/css/images/logo_round.png" alt="" height="55px" width="70px"> 
+                <span>E-Learning</span>
+            </h2>
+        </a>
+          
+          <!-- Hamburger Icon for Mobile -->
+          <div class="menu-icon" onclick="toggleMenu()">
+              <i class="fa fa-bars"></i>
+          </div>
+          
+          <!-- Navigation Menu -->
+          <ul id="header">
+              <li><a href="E-Learning.html">Home</a></li>
+              <div class="dropdown">
+  <button class="dropbtn">Courses <i class="fa fa-sort"></i></button>
+  <div class="dropdown-content">
+      <a href="#">C Programming</a>
+      <a href="#">Python Programming</a>
+      <a href="/lectures/java.html">Java Programming</a>
+      <a href="courses.html">View More</a>
+  </div>
+              </div>
+              <li><a href="about us.html">About Us</a></li>
+              <li><a href="Login.html">Login <i class="fa fa-sign-in"></i></a></li>
+              <li><a href="Signup.html">Signup <i class="fa fa-user"></i></a></li>
+          </ul>
+      </nav>
+  </div>
+
+  <section class="signup-form-section">
+    <h2>Create Account</h2>
+    <form action="#" method="POST" class="signup-form">
+        <div class="form-group">
+            <label for="name">Full Name</label>
+            <input type="text" id="name" name="name" placeholder="Enter your full name" required>
+        </div>
+        <div class="form-group">
+            <label for="email">Email Address</label>
+            <input type="email" id="email" name="email" placeholder="Enter your email" required>
+        </div>
+        <div class="form-group">
+            <label for="password">Password</label>
+            <input type="password" id="password" name="password" placeholder="Create a password" required>
+        </div>
+        <div class="form-group">
+            <label for="confirm-password">Confirm Password</label>
+            <input type="password" id="confirm-password" name="confirm-password" placeholder="Confirm your password" required>
+        </div>
+        <div class="form-group">
+            <button type="submit" class="submit-btn">Sign Up</button>
+        </div>
+        <p>Already have an account? <a href="Login.html">Login here</a></p>
+    </form>
+</section>
+
+
+<style>
+
+  /* Signup Form Styling */
+.signup-form-section {
+  background-color: #fff;
+  padding: 40px;
+  border-radius: 10px;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+  margin-top: 50px;
+}
+
+.signup-form-section h2 {
+  text-align: center;
+  font-size: 2.5rem;
+  margin-bottom: 20px;
+}
+
+.signup-form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.signup-form .form-group {
+  display: flex;
+  flex-direction: column;
+}
+
+.signup-form label {
+  font-size: 1.1rem;
+  margin-bottom: 5px;
+}
+
+.signup-form input {
+  padding: 10px;
+  font-size: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  outline: none;
+}
+
+.signup-form input:focus {
+  border-color: #007bff;
+}
+
+.signup-form .submit-btn {
+  padding: 12px;
+  font-size: 1.2rem;
+  color: white;
+  background-color: #007bff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.signup-form .submit-btn:hover {
+  background-color: #0056b3;
+}
+
+.signup-form p {
+  text-align: center;
+  font-size: 1rem;
+}
+
+.signup-form p a {
+  color: #007bff;
+  text-decoration: none;
+}
+
+.signup-form p a:hover {
+  text-decoration: underline;
+}
+</style>
+
+
+<footer class="footer">
+<div class="footer-links">
+  <a href="E-learning.html">Home</a>
+  <a href="#">Courses</a>
+  <a href="about us.html">About Us</a>
+  <a href="contactus.html">Contact</a>
+  <a href="Signup.html">Signup</a>
+</div>
+<div class="social-icons">
+  <a href="#" class="fa fa-facebook"></a>
+  <a href="#" class="fa fa-twitter"></a>
+  <a href="https://www.instagram.com/jay_kumar_sharma_/" class="fa fa-instagram"></a>
+  <a href="#" class="fa fa-linkedin"></a>
+</div>
+<div class="copyright">
+  &copy; 2024 E-Learning. All Rights Reserved.
+</div>
+</footer>
+
+
+<!-- -------------RIGHT CLICK DISABLE CODE  -->
+<!-- <script>
+document.addEventListener('contextmenu', function(event) {
+    event.preventDefault();
+    alert('Right-click is disabled on this website!');
+}); 
+</script> -->
+<!-- ----------------------------------------------------- -->
+</body>
+</html>
+
+
+  <script type="text/javascript">
+// Function to toggle the main menu (hamburger)
+function toggleMenu() {
+    const menu = document.getElementById("header");
+    menu.classList.toggle("active");
+}
+
+// Function to toggle the dropdown on mobile devices
+function toggleDropdown(event) {
+    event.preventDefault(); // Prevents the default behavior of links (if clicked)
+    const dropdownContent = event.currentTarget.nextElementSibling;
+
+    // Toggle visibility of the dropdown menu
+    dropdownContent.classList.toggle('show');
+}
+
+// Add event listener to dropdown button to toggle dropdown on mobile
+document.querySelectorAll('.dropbtn').forEach(button => {
+    button.addEventListener('click', toggleDropdown);
+});
+
+// Optional: Close the dropdown when clicking anywhere outside the dropdown (to improve UX)
+document.addEventListener('click', function(event) {
+    const dropdownContent = document.querySelectorAll('.dropdown-content');
+
+    dropdownContent.forEach(dropdown => {
+        if (!dropdown.contains(event.target) && !event.target.closest('.dropdown')) {
+            dropdown.classList.remove('show');
+        }
+    });
+});
+
+
+  </script>
+
+
+<!-- -------------RIGHT CLICK DISABLE CODE  -->
+<!-- <script>
+document.addEventListener('contextmenu', function(event) {
+  event.preventDefault();
+  alert('Right-click is disabled on this website!');
+}); 
+</script> -->
+<!-- ----------------------------------------------------- -->
+</body>
+</html>
+
+
+</body>
+</html>

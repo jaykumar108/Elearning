@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/png" href="C:\Users\hp\Documents\E-Learnig Project\images\logo_round.png"/>
+
+    <title>Java Lecture - Page </title>
+</head>
+<body>
+    <div class="lecture-selection">
+       <center> <h1> Java Lectures </h1></center>
+        <h2>Click a Lecture to Play Videos</h2>
+    
+        <!-- Buttons for each lecture -->
+        <button class="lecture-btn" onclick="showLecture(1)">Lecture 1</button>
+        <button class="lecture-btn" onclick="showLecture(2)">Lecture 2</button>
+        <button class="lecture-btn" onclick="showLecture(3)">Lecture 3</button>
+    
+        <!-- Iframes for videos (initially hidden) -->
+        <div id="iframe1" class="lecture-video">
+            <iframe id="video1" width="560" height="315" src="https://www.youtube.com/embed/yRpLlJmRo2w?si=PDscEF1zlkSfB-0M" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        </div>
+    
+        <div id="iframe2" class="lecture-video">
+            <iframe id="video2" width="560" height="315" src="https://www.youtube.com/embed/LusTv0RlnSU?si=8-W6V6--9wI-j5bu" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        </div>
+    
+        <div id="iframe3" class="lecture-video">
+            <iframe id="video3" width="560" height="315" src="https://www.youtube.com/embed/I5srDu75h_M?si=uHNjNgUiFGbFe_Ny" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        </div>
+    </div>
+
+    <br/>
+    <br/>
+    <h2 class="back">  Back to Home <a href="C:\Users\hp\Documents\E-Learnig Project\VIEWS\E-learning.html"> Click Here</a></h2>
+<style>
+
+
+    /* Styling the buttons */
+/* Styling the buttons */
+body{
+    font-family: Arial, sans-serif;
+
+}
+.lecture-btn {
+    padding: 10px 20px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin: 5px;
+}
+
+.lecture-btn:hover {
+    background-color: #45a049;
+}
+
+/* Hide the iframes initially */
+.lecture-video {
+    display: none; /* Initially hide all video containers */
+    margin-top: 20px;
+}
+
+/* Make iframe responsive */
+iframe {
+    width: 100%;
+    max-width: 560px;
+    height: 315px;
+}
+
+
+
+
+.back {
+    text-align: center;
+    margin: 20px 0;
+    font-family: Arial, sans-serif;
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.back a {
+    text-decoration: none;
+    color: white;
+    background-color: #007BFF; /* Primary color */
+    padding: 10px 20px;
+    border-radius: 5px;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.back a:hover {
+    background-color: #0056b3; /* Darker shade for hover effect */
+    transform: scale(1.05); /* Slight zoom effect */
+}
+
+.back a:active {
+    background-color: #003d80; /* Even darker shade for active state */
+    transform: scale(0.95); /* Slight shrink effect */
+}
+
+/* Responsive design for smaller devices */
+@media (max-width: 768px) {
+    .back a {
+        font-size: 16px;
+        padding: 8px 16px;
+    }
+}
+
+@media (max-width: 480px) {
+    .back a {
+        font-size: 14px;
+        padding: 6px 12px;
+    }
+}
+
+
+</style>    
+
+
+<script>
+    // Function to show the selected lecture and pause others
+function showLecture(lectureId) {
+    // Hide all video containers first
+    var lectures = document.querySelectorAll('.lecture-video');
+    lectures.forEach(function(lecture) {
+        lecture.style.display = 'none';
+    });
+
+    // Pause all videos by changing their iframe src
+    var iframeIds = ['video1', 'video2', 'video3'];
+    iframeIds.forEach(function(iframeId) {
+        var iframe = document.getElementById(iframeId);
+        var src = iframe.src;
+        iframe.src = ''; // Temporarily remove the src to stop the video
+        iframe.src = src; // Reassign the src to reset the video
+    });
+
+    // Show the selected lecture's video
+    var selectedLecture = document.getElementById('iframe' + lectureId);
+    if (selectedLecture) {
+        selectedLecture.style.display = 'block';
+    }
+}
+
+</script>
+
+</body>
+</html>

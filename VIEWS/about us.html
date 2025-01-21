@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About-us - E-Learning</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/css/learning.css">
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+    <script src="/bootstrap.min.js"></script>
+    <link rel="icon" type="image/png" href="/css/images/logo_round.png"/>
+    
+</head>
+
+<body>
+  <div class="containeer">
+      <nav>
+          <!-- E-Learning Logo Section -->
+          <a href="E-learning.html" class="logo">
+            <h2>
+                <img src="/css/images/logo_round.png" alt="" height="55px" width="70px"> 
+                <span>E-Learning</span>
+            </h2>
+        </a>
+          
+          <!-- Hamburger Icon for Mobile -->
+          <div class="menu-icon" onclick="toggleMenu()">
+              <i class="fa fa-bars"></i>
+          </div>
+          
+          <!-- Navigation Menu -->
+          <ul id="header">
+              <li><a href="E-Learning.html">Home</a></li>
+              <div class="dropdown">
+  <button class="dropbtn">Courses <i class="fa fa-sort"></i></button>
+  <div class="dropdown-content">
+      <a href="#">C Programming</a>
+      <a href="#">Python Programming</a>
+      <a href="/lectures/java.html">Java Programming</a>
+      <a href="courses.html">View More</a>
+  </div>
+              </div>
+              <li><a href="about us.html">About Us</a></li>
+              <li><a href="Login.html">Login <i class="fa fa-sign-in"></i></a></li>
+              <li><a href="Signup.html">Signup <i class="fa fa-user"></i></a></li>
+          </ul>
+      </nav>
+  </div>
+
+<!-- About Us Section -->
+<section class="about-us">
+  <div class="about-intro">
+      <h1>Welcome to E-Learning</h1>
+      <p>We are here to make learning accessible to everyone. Our mission is to help you acquire valuable skills through our engaging and comprehensive online courses.</p>
+  </div>
+
+  <div class="mission">
+      <h2>Our Mission</h2>
+      <p>At E-Learning, we are committed to providing top-notch educational content that helps learners of all ages and backgrounds reach their full potential. We aim to make learning enjoyable, accessible, and effective.</p>
+  </div>
+
+  <!-- Team Members Section -->
+  <div class="team">
+      <h2>Meet Our Team</h2>
+      <div class="team-members">
+          <div class="team-member">
+              <img src="/css/images/founder.jpg" alt="John Doe">
+              <h3>Jay Sharma</h3>
+              <p>CEO & Founder</p>
+          </div>
+          <div class="team-member">
+              <img src="/css/images/lead.jpg" alt="Jane Smith">
+              <h3>Om Sen</h3>
+              <p>Lead Instructor</p>
+          </div>
+          <div class="team-member">
+              <img src="https://via.placeholder.com/200" alt="David Lee">
+              <h3>David Lee</h3>
+              <p>CTO</p>
+          </div>
+      </div>
+  </div>
+
+</section>
+
+
+<style>
+  /* About Us Section */
+.about-us {
+    padding: 60px 20px;
+    background-color: #fff;
+    text-align: center;
+}
+
+.about-us .about-intro h1 {
+    font-size: 2.5rem;
+    margin-bottom: 15px;
+}
+
+.about-us .about-intro p {
+    font-size: 1.2rem;
+    margin-bottom: 30px;
+    color: #555;
+}
+
+.mission {
+    margin-top: 50px;
+    padding: 50px 20px;
+    background-color: #f2f2f2;
+}
+
+.mission h2 {
+    font-size: 2.2rem;
+    margin-bottom: 20px;
+}
+
+.mission p {
+    font-size: 1.1rem;
+    color: #555;
+    line-height: 1.6;
+}
+
+/* Team Section */
+.team {
+    padding: 60px 20px;
+    background-color: #fff;
+}
+
+.team h2 {
+    font-size: 2.5rem;
+    margin-bottom: 40px;
+}
+
+.team-members {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    flex-wrap: wrap;
+}
+
+.team-member {
+    text-align: center;
+    width: 30%;
+    margin-bottom: 30px;
+}
+
+.team-member img {
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    border: 5px solid #ddd;
+    margin-bottom: 20px;
+    transition: transform 0.3s;
+}
+
+.team-member img:hover {
+    transform: scale(1.1);
+}
+
+.team-member h3 {
+    font-size: 1.5rem;
+    margin-bottom: 10px;
+}
+
+.team-member p {
+    font-size: 1rem;
+    color: #777;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    nav ul {
+        display: none;
+        flex-direction: column;
+        position: absolute;
+        top: 60px;
+        left: 0;
+        background-color: #333;
+        width: 100%;
+    }
+
+    nav ul li a {
+        padding: 10px;
+        border-bottom: 1px solid #fff;
+    }
+
+    .menu-icon {
+        display: block;
+        cursor: pointer;
+        color: #fff;
+    }
+
+    .team-members {
+        flex-direction: column;
+    }
+
+    .team-member {
+        width: 80%;
+    }
+    
+    .dropdown-content {
+        position: absolute;
+        display: none;
+        background-color: #333;
+    }
+
+    .dropdown-content a {
+        color: #fff;
+        padding: 10px;
+    }
+
+    .dropdown-content.show {
+        display: block;
+    }
+}
+
+@media (max-width: 480px) {
+    .about-us .about-intro h1 {
+        font-size: 2rem;
+    }
+
+    .about-us .about-intro p {
+        font-size: 1rem;
+    }
+
+    .mission h2 {
+        font-size: 2rem;
+    }
+}
+</style>
+
+<footer class="footer">
+<div class="footer-links">
+  <a href="E-learning.html">Home</a>
+  <a href="#">Courses</a>
+  <a href="about us.html">About Us</a>
+  <a href="contactus.html">Contact</a>
+  <a href="Signup.html">Signup</a>
+</div>
+<div class="social-icons">
+  <a href="#" class="fa fa-facebook"></a>
+  <a href="#" class="fa fa-twitter"></a>
+  <a href="https://www.instagram.com/jay_kumar_sharma_/" class="fa fa-instagram"></a>
+  <a href="#" class="fa fa-linkedin"></a>
+</div>
+<div class="copyright">
+  &copy; 2024 E-Learning. All Rights Reserved.
+</div>
+</footer>
+
+
+<!-- -------------RIGHT CLICK DISABLE CODE  -->
+<!-- <script>
+document.addEventListener('contextmenu', function(event) {
+    event.preventDefault();
+    alert('Right-click is disabled on this website!');
+}); 
+</script> -->
+<!-- ----------------------------------------------------- -->
+</body>
+</html>
+
+
+  <script type="text/javascript">
+// Function to toggle the main menu (hamburger)
+function toggleMenu() {
+    const menu = document.getElementById("header");
+    menu.classList.toggle("active");
+}
+
+// Function to toggle the dropdown on mobile devices
+function toggleDropdown(event) {
+    event.preventDefault(); // Prevents the default behavior of links (if clicked)
+    const dropdownContent = event.currentTarget.nextElementSibling;
+
+    // Toggle visibility of the dropdown menu
+    dropdownContent.classList.toggle('show');
+}
+
+// Add event listener to dropdown button to toggle dropdown on mobile
+document.querySelectorAll('.dropbtn').forEach(button => {
+    button.addEventListener('click', toggleDropdown);
+});
+
+// Optional: Close the dropdown when clicking anywhere outside the dropdown (to improve UX)
+document.addEventListener('click', function(event) {
+    const dropdownContent = document.querySelectorAll('.dropdown-content');
+
+    dropdownContent.forEach(dropdown => {
+        if (!dropdown.contains(event.target) && !event.target.closest('.dropdown')) {
+            dropdown.classList.remove('show');
+        }
+    });
+});
+
+
+  </script>
+
+
+<!-- -------------RIGHT CLICK DISABLE CODE  -->
+<!-- <script>
+document.addEventListener('contextmenu', function(event) {
+  event.preventDefault();
+  alert('Right-click is disabled on this website!');
+}); 
+</script> -->
+<!-- ----------------------------------------------------- -->
+</body>
+</html>
+
+
+</body>
+</html>
