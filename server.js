@@ -10,11 +10,23 @@ main()
 })
 .catch(err => console.log(err));
 
-async function main() {
-  await mongoose.connect('mongodb://127.0.0.1:27017/RegisterUser');
 
-  // use `await mongoose.connect('mongodb://user:password@127.0.0.1:27017/test');` if your database has auth enabled
-}
+// ✅ MongoDB Connection (Using Atlas) - Hardcoded Connection String
+require('dotenv').config();  // ✅ Load environment variables FIRST
+
+
+// ✅ MongoDB Connection (Using Atlas)
+mongoose.connect(process.env.MONGO_URI, {
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+})
+.then(() => console.log("✅ MongoDB Connected"))
+.catch(err => console.error("❌ MongoDB Connection Failed:", err));
+
+const PORT = process.env.PORT || 5000;  // ✅ Set a default port value
+
+
+
 
 app.use(express.static(path.join(__dirname, 'VIEWS')));
 app.use(express.static(path.join(__dirname, 'Public')));
@@ -27,7 +39,7 @@ app.get("/home", (req, res) => {
   res.sendFile(path.join(__dirname, 'VIEWS', 'E-learning.html'));
 });
 
-const port = 8080;
+const port = 5000;
 
 app.listen(port, (req, res)=>{
     console.log("App is listening", port);

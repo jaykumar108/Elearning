@@ -13,15 +13,15 @@
   }
 
 /* ---------------------------------------------------------------------- */
-  /* Sticky Header Style */
+  /*----------------- Sticky Header Style --------------*/
 nav.sticky {
   position: fixed;
   top: 0;
   width: 100%;
-  z-index: 1000; /* Ensure it stays above other elements */
-  background-color:wheat; /* Add a background to avoid transparency */
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Optional shadow for better visibility */
-  transition: all 0.3s ease; /* Smooth transition for sticky effect */
+  z-index: 1000; 
+  background-color:wheat; 
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); 
+  transition: all 0.3s ease; 
 }
 
 /* ------------------------------------------------------------------ */
@@ -30,13 +30,13 @@ nav.sticky {
 
 
 
-  /* Container Styling */
+  
   .containeer {
     background-color: antiquewhite;
     width: 100%;
   }
 
-  /* Header and Navigation Styling */
+  
   nav {
     display: flex;
     align-items: center;
@@ -111,9 +111,9 @@ nav.sticky {
 
   /* -------------------------------- */
   .logo h2 {
-    display: flex; /* Enable flexbox */
-    align-items: center; /* Vertically center the items */
-    gap: 10px; /* Adds some space between the image and the text */
+    display: flex; 
+    align-items: center;
+    gap: 10px; 
   }
 
   .logo img {
@@ -150,7 +150,7 @@ nav.sticky {
   }
 
   .dropdown-content {
-    display: none; /* Default to hidden */
+    display: none; 
     position: absolute;
     right: 0;
     background-color: #f9f9f9;
@@ -219,12 +219,12 @@ nav.sticky {
       
     }
 
-    /* Ensure the dropdown content is hidden on mobile by default */
+   
     .dropdown-content {
-        position: relative; /* Make sure dropdown opens under the button */
+        position: relative; 
         left: 0;
-        width: 100%; /* Full width */
-        display: none; /* Hide on mobile */
+        width: 100%; 
+        display: none;
 
     }
 
@@ -233,7 +233,7 @@ nav.sticky {
         
     }
 
-    /* Adjust the layout of the dropdown button */
+ 
     .dropbtn {
         display: block;
         width: 100%;
@@ -243,7 +243,7 @@ nav.sticky {
         
     }
 
-    /* Make sure dropdown only opens on click for mobile */
+
     .dropdown.active .dropdown-content {
         display: block;
     }
@@ -334,7 +334,7 @@ nav.sticky {
 
 /* --------------------------------------------------------------------------------------------------------- */
   /* STUDENT REVIWE SECTION CODE HERE    */
-/* Reviews Section Styling */
+
 .reviews-section {
   padding: 50px;
   background-color: #fff;
@@ -347,7 +347,7 @@ nav.sticky {
   color: #333;
 }
 
-/* Reviews Container */
+
 .reviews-container {
   display: flex;
   justify-content: center;
@@ -355,7 +355,6 @@ nav.sticky {
   flex-wrap: wrap;
 }
 
-/* Individual Review Card */
 .review-card {
   background-color: #f2f2f2;
   border-radius: 8px;
@@ -370,7 +369,7 @@ nav.sticky {
   transform: translateY(-10px);
 }
 
-/* Reviewer Image */
+
 .reviewer-img {
   border-radius: 50%;
   width: 100px;
@@ -378,7 +377,7 @@ nav.sticky {
   margin-bottom: 15px;
 }
 
-/* Review Text */
+
 .review-text {
   color: #555;
 }
@@ -414,7 +413,7 @@ nav.sticky {
   color: #333;
 }
 
-/* Feedback container with horizontal scrolling */
+
 .feedback-container {
   display: flex;
   overflow: hidden;
@@ -427,7 +426,7 @@ nav.sticky {
   animation: scrollFeedbacks 30s linear infinite;
 }
 
-/* Each review card style */
+
 .feedback-card {
   min-width: 250px;
   margin: 0 15px;
@@ -437,7 +436,7 @@ nav.sticky {
   padding: 20px;
   text-align: center;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  flex-shrink: 0; /* Prevent shrinking on smaller screens */
+  flex-shrink: 0; 
 }
 
 .feedback-card img {
@@ -459,7 +458,7 @@ nav.sticky {
   margin-top: 10px;
 }
 
-/* Scrolling Animation */
+  /* ----------------SCROLLING ANIMATION --------------------------------*/
 @keyframes scrollFeedbacks {
   0% {
       transform: translateX(0);
@@ -469,29 +468,29 @@ nav.sticky {
   }
 }
 
-/* Pause scrolling on hover */
+/* ---------cursor scrolling stop code here -------------------- */
 .feedback-container.paused {
   animation-play-state: paused;
 }
 
-/* Responsive Design for smaller screens */
+/* --------------------------------------RESPONSIVE FOR DIFFERENT DEVICES CODE HERE  ----------------- */
 @media (max-width: 768px) {
   .feedback-card {
-      min-width: 200px; /* Reduce card size on smaller screens */
+      min-width: 200px; 
   }
 
   .feedback-section h2 {
-      font-size: 1.5rem; /* Adjust heading font size */
+      font-size: 1.5rem; 
   }
 }
 
 @media (max-width: 480px) {
   .feedback-card {
-      min-width: 150px; /* Even smaller cards for very small screens */
+      min-width: 150px; 
   }
 
   .feedback-section h2 {
-      font-size: 1.2rem; /* Further reduce heading size */
+      font-size: 1.2rem; 
   }
 }
 
