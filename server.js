@@ -29,7 +29,7 @@ app.get("/", (req, res) => {
     res.send("App Is working");
 });
 
-app.get("/", (req, res) => {
+app.get("/home", (req, res) => {
     res.sendFile(path.join(__dirname, "VIEWS", "E-learning.html"));
 });
 
