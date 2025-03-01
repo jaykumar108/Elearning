@@ -1,12 +1,18 @@
+require("dotenv").config();
 const express = require("express");
 const mongoose = require("mongoose");
 const path = require("path");
 
 const app = express();
-const PORT = process.env.PORT || 5000;  // Use only one port
+const PORT = process.env.PORT || 5000;
 
-// Connect to MongoDB
+// Debugging log to check MONGO_URI
+console.log("MongoDB URI:", process.env.MONGO_URI);
+
 async function main() {
+    if (!process.env.MONGO_URI) {
+        throw new Error("MONGO_URI is not defined in the environment variables.");
+    }
     await mongoose.connect(process.env.MONGO_URI, {
         useNewUrlParser: true,
         useUnifiedTopology: true,
@@ -14,24 +20,19 @@ async function main() {
     console.log("Connected to MongoDB");
 }
 
-main()
-    .then(() => console.log("Connected to DataBase"))
-    .catch((err) => console.log(err));
+main().catch(err => console.error("MongoDB Connection Error:", err));
 
-// Middleware to serve static files
 app.use(express.static(path.join(__dirname, "VIEWS")));
 app.use(express.static(path.join(__dirname, "Public")));
 
-// Routes
 app.get("/", (req, res) => {
     res.send("App Is working");
 });
 
-app.get("/home", (req, res) => {
+app.get("/", (req, res) => {
     res.sendFile(path.join(__dirname, "VIEWS", "E-learning.html"));
 });
 
-// Start server
 app.listen(PORT, () => {
     console.log(`App is listening on port ${PORT}`);
 });
