@@ -1,0 +1,929 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profile - E-Learning</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/css/learning.css">
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+    <script src="/bootstrap.min.js"></script>
+    <link rel="icon" type="image/png" href="/css/images/logo_round.png"/>
+    
+</head>
+
+<body>
+  <div class="containeer">
+      <nav>
+          <!-- E-Learning Logo Section -->
+          <a href="/home" class="logo">
+            <h2>
+                <img src="/css/images/logo_round.png" alt="" height="55px" width="70px"> 
+                <span>E-Learning</span>
+            </h2>
+        </a>
+          
+          <!-- Hamburger Icon for Mobile -->
+          <div class="menu-icon" onclick="toggleMenu()">
+              <i class="fa fa-bars"></i>
+          </div>
+          
+          <!-- Navigation Menu -->
+          <ul id="header">
+              <li><a href="/home">Home</a></li>
+              <div class="dropdown">
+  <button class="dropbtn">Courses <i class="fa fa-sort"></i></button>
+  <div class="dropdown-content">
+      <a href="#">C Programming</a>
+      <a href="#">Python Programming</a>
+      <a href="/lectures/java.html">Java Programming</a>
+      <a href="courses.html">View More</a>
+  </div>
+              </div>
+              <li><a href="about us.html">About Us</a></li>
+              <li id="loginNavItem"><a href="Login.html">Login <i class="fa fa-sign-in"></i></a></li>
+              <li id="signupNavItem"><a href="Signup.html">Signup <i class="fa fa-user"></i></a></li>
+              <li id="profileNavItem" style="display: none;"><a href="profile.html">Profile <i class="fa fa-user"></i></a></li>
+              <li id="logoutNavItem" style="display: none;"><a href="#" id="logoutBtn">Logout <i class="fa fa-sign-out"></i></a></li>
+          </ul>
+      </nav>
+  </div>
+
+  <section class="profile-section">
+    <div class="profile-container">
+        <h2>My Profile</h2>
+        <div id="profileData" class="profile-data">
+            <div class="profile-loading">Loading profile information...</div>
+        </div>
+        
+        <!-- Enrolled Courses Section -->
+        <div class="enrolled-courses-section">
+            <h3>My Enrolled Courses</h3>
+            <div id="enrolledCourses" class="enrolled-courses-container">
+                <div class="courses-loading">Loading your courses...</div>
+            </div>
+        </div>
+        
+        <div class="profile-actions">
+            <a href="courses.html" class="action-btn">Browse Courses</a>
+        </div>
+    </div>
+  </section>
+
+<style>
+  .profile-section {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 80vh;
+    background-color: #f7f7f7;
+    padding: 20px;
+  }
+
+  .profile-container {
+    background-color: white;
+    padding: 40px;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 800px;
+  }
+
+  .profile-container h2 {
+    text-align: center;
+    font-size: 2rem;
+    margin-bottom: 30px;
+    color: #333;
+  }
+
+  .profile-data {
+    margin-bottom: 30px;
+  }
+
+  .profile-field {
+    margin-bottom: 20px;
+  }
+
+  .profile-field label {
+    font-weight: bold;
+    display: block;
+    margin-bottom: 5px;
+    color: #666;
+  }
+
+  .profile-field .value {
+    font-size: 1.1rem;
+    color: #333;
+    padding: 10px;
+    background-color: #f9f9f9;
+    border-radius: 4px;
+  }
+
+  .profile-loading, .courses-loading {
+    text-align: center;
+    color: #666;
+    padding: 20px;
+  }
+
+  .profile-actions {
+    display: flex;
+    justify-content: center;
+    margin-top: 30px;
+  }
+
+  .action-btn {
+    display: inline-block;
+    padding: 12px 24px;
+    background-color: #007bff;
+    color: white;
+    text-decoration: none;
+    border-radius: 4px;
+    transition: background-color 0.3s;
+    font-weight: 600;
+  }
+
+  .action-btn:hover {
+    background-color: #0056b3;
+    color: white;
+  }
+
+  .auth-required {
+    text-align: center;
+    padding: 40px 20px;
+    color: #721c24;
+    background-color: #f8d7da;
+    border-radius: 4px;
+    margin: 20px 0;
+  }
+
+  .auth-required a {
+    color: #0056b3;
+    text-decoration: underline;
+  }
+  
+  /* Enrolled Courses Styles */
+  .enrolled-courses-section {
+    margin-top: 40px;
+    border-top: 1px solid #eee;
+    padding-top: 30px;
+  }
+  
+  .enrolled-courses-section h3 {
+    font-size: 1.5rem;
+    margin-bottom: 20px;
+    color: #333;
+    text-align: center;
+  }
+  
+  .enrolled-courses-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 20px;
+  }
+  
+  .course-card {
+    background-color: white;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s, box-shadow 0.3s;
+    position: relative;
+  }
+  
+  .course-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.15);
+  }
+  
+  .course-image {
+    width: 100%;
+    height: 150px;
+    object-fit: cover;
+  }
+  
+  .course-details {
+    padding: 15px;
+  }
+  
+  .course-title {
+    font-size: 1.1rem;
+    margin-bottom: 8px;
+    color: #333;
+    font-weight: 600;
+  }
+  
+  .course-category {
+    color: #007bff;
+    font-size: 0.85rem;
+    margin-bottom: 8px;
+  }
+  
+  .course-progress {
+    margin-top: 12px;
+  }
+  
+  .progress-bar-bg {
+    width: 100%;
+    height: 8px;
+    background-color: #e9ecef;
+    border-radius: 4px;
+    overflow: hidden;
+  }
+  
+  .progress-bar-fill {
+    height: 100%;
+    background-color: #28a745;
+    border-radius: 4px;
+  }
+  
+  .progress-text {
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.8rem;
+    color: #666;
+    margin-top: 5px;
+  }
+  
+  .course-actions {
+    display: flex;
+    margin-top: 15px;
+  }
+  
+  .course-btn {
+    flex: 1;
+    padding: 8px 0;
+    text-align: center;
+    border: none;
+    background-color: #f8f9fa;
+    color: #333;
+    font-size: 0.9rem;
+    cursor: pointer;
+    transition: background-color 0.2s;
+    text-decoration: none;
+  }
+  
+  .course-btn:hover {
+    background-color: #e9ecef;
+  }
+  
+  .continue-btn {
+    background-color: #007bff;
+    color: white;
+    border-radius: 0 0 0 8px;
+  }
+  
+  .continue-btn:hover {
+    background-color: #0069d9;
+    color: white;
+  }
+  
+  .certificate-btn {
+    background-color: #28a745;
+    color: white;
+    border-radius: 0 0 8px 0;
+  }
+  
+  .certificate-btn:hover {
+    background-color: #218838;
+    color: white;
+  }
+  
+  .no-courses {
+    text-align: center;
+    padding: 30px;
+    background-color: #f8f9fa;
+    border-radius: 8px;
+    color: #666;
+    grid-column: 1 / -1;
+  }
+  
+  .no-courses p {
+    margin-bottom: 15px;
+  }
+
+  .remove-course-btn {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background-color: rgba(255, 255, 255, 0.9);
+    color: #dc3545;
+    border: none;
+    border-radius: 50%;
+    width: 32px;
+    height: 32px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    transition: all 0.2s;
+    opacity: 0;
+    font-size: 14px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    padding: 0;
+  }
+
+  .remove-course-btn i {
+    font-size: 16px;
+  }
+
+  .course-card:hover .remove-course-btn {
+    opacity: 1;
+  }
+
+  .remove-course-btn:hover {
+    background-color: #dc3545;
+    color: white;
+    transform: scale(1.1);
+  }
+
+  .alert-message {
+    padding: 12px 20px;
+    margin-bottom: 20px;
+    border-radius: 4px;
+    display: flex;
+    align-items: center;
+    font-weight: 500;
+    opacity: 1;
+    transition: opacity 0.3s;
+  }
+
+  .alert-message i {
+    margin-right: 10px;
+    font-size: 18px;
+  }
+
+  .alert-message.success {
+    background-color: #d4edda;
+    color: #155724;
+    border-left: 4px solid #28a745;
+  }
+
+  .alert-message.error {
+    background-color: #f8d7da;
+    color: #721c24;
+    border-left: 4px solid #dc3545;
+  }
+</style>
+
+<footer class="new-footer">
+    <div class="footer-top">
+        <div class="footer-logo">
+            <img src="/css/images/logo_round.png" alt="E-Learning Logo" height="60px">
+            <h3>E-Learning</h3>
+            <p>Empowering minds through quality education.</p>
+        </div>
+        
+        <div class="footer-links">
+            <h4>Quick Links</h4>
+            <ul>
+                <li><a href="/home">Home</a></li>
+                <li><a href="courses.html">Courses</a></li>
+                <li><a href="about us.html">About Us</a></li>
+                <li><a href="contactus.html">Contact</a></li>
+                <li><a href="Login.html">Login</a></li>
+                <li><a href="Signup.html">Signup</a></li>
+            </ul>
+        </div>
+        
+        <div class="footer-courses">
+            <h4>Popular Courses</h4>
+            <ul>
+                <li><a href="courses.html">Web Development</a></li>
+                <li><a href="courses.html">Python Programming</a></li>
+                <li><a href="courses.html">Data Science</a></li>
+                <li><a href="courses.html">UI/UX Design</a></li>
+                <li><a href="courses.html">Digital Marketing</a></li>
+            </ul>
+        </div>
+        
+        <div class="footer-contact">
+            <h4>Contact Us</h4>
+            <p><i class="fa fa-map-marker"></i> 123 Education Street, Learning City</p>
+            <p><i class="fa fa-phone"></i> +91 1234 567890</p>
+            <p><i class="fa fa-envelope"></i> info@elearning.com</p>
+        </div>
+        
+        <div class="footer-contact-form">
+            <h4>Quick Contact</h4>
+            <p>Have a question? Send us a message.</p>
+            <form class="contact-mini-form">
+                <input type="text" placeholder="Your Name" required>
+                <input type="text" placeholder="Email or Mobile" required>
+                <textarea placeholder="Your Message" rows="3" required></textarea>
+                <button type="submit" class="contact-submit-btn">Send <i class="fa fa-paper-plane"></i></button>
+            </form>
+        </div>
+    </div>
+    
+    <div class="footer-bottom">
+        <div class="social-icons">
+            <a href="#" class="social-icon"><i class="fa fa-facebook"></i></a>
+            <a href="#" class="social-icon"><i class="fa fa-twitter"></i></a>
+            <a href="https://www.instagram.com/jay_kumar_sharma_/" class="social-icon"><i class="fa fa-instagram"></i></a>
+            <a href="#" class="social-icon"><i class="fa fa-linkedin"></i></a>
+            <a href="#" class="social-icon"><i class="fa fa-youtube"></i></a>
+        </div>
+        <div class="copyright">
+            &copy; 2024 E-Learning. All Rights Reserved.
+        </div>
+    </div>
+</footer>
+
+<style>
+/* New Footer Styles */
+.new-footer {
+    background: linear-gradient(to right, #1a2036, #293145);
+    color: #fff;
+    padding: 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.footer-top {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 30px;
+    padding: 60px 40px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.footer-logo h3 {
+    margin: 15px 0 10px;
+    font-size: 1.5rem;
+    font-weight: 600;
+}
+
+.footer-logo p {
+    color: #aab0c3;
+    font-size: 0.9rem;
+    line-height: 1.5;
+    margin-top: 10px;
+}
+
+.footer-links h4, .footer-courses h4, .footer-contact h4, .footer-contact-form h4 {
+    color: #fff;
+    font-size: 1.2rem;
+    margin-bottom: 20px;
+    position: relative;
+    padding-bottom: 10px;
+}
+
+.footer-links h4:after, .footer-courses h4:after, .footer-contact h4:after, .footer-contact-form h4:after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 40px;
+    height: 2px;
+    background: #4d84e2;
+}
+
+.footer-links ul, .footer-courses ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.footer-links ul li, .footer-courses ul li {
+    margin-bottom: 12px;
+}
+
+.footer-links ul li a, .footer-courses ul li a {
+    color: #aab0c3;
+    text-decoration: none;
+    transition: color 0.3s;
+    font-size: 0.95rem;
+    display: block;
+    padding: 3px 0;
+}
+
+.footer-links ul li a:hover, .footer-courses ul li a:hover {
+    color: #4d84e2;
+    transform: translateX(5px);
+}
+
+.footer-contact p {
+    color: #aab0c3;
+    margin-bottom: 15px;
+    font-size: 0.95rem;
+    display: flex;
+    align-items: center;
+}
+
+.footer-contact p i {
+    margin-right: 10px;
+    color: #4d84e2;
+    width: 20px;
+    text-align: center;
+}
+
+.footer-contact-form p {
+    color: #aab0c3;
+    margin-bottom: 15px;
+    font-size: 0.95rem;
+    line-height: 1.5;
+}
+
+.contact-mini-form {
+    display: flex;
+    flex-direction: column;
+}
+
+.contact-mini-form input, .contact-mini-form textarea {
+    padding: 12px 15px;
+    border: none;
+    background: rgba(255, 255, 255, 0.1);
+    color: #fff;
+    border-radius: 4px;
+    margin-bottom: 15px;
+}
+
+.contact-mini-form input::placeholder, .contact-mini-form textarea::placeholder {
+    color: #aab0c3;
+}
+
+.contact-submit-btn {
+    background: #4d84e2;
+    color: white;
+    border: none;
+    padding: 12px 20px;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+.contact-submit-btn:hover {
+    background: #3a6ec3;
+}
+
+.footer-bottom {
+    background: rgba(0, 0, 0, 0.2);
+    padding: 20px 40px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+.social-icons {
+    display: flex;
+    gap: 15px;
+    margin-bottom: 15px;
+}
+
+.social-icon {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 40px;
+    height: 40px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 50%;
+    color: #fff;
+    transition: all 0.3s;
+}
+
+.social-icon:hover {
+    background: #4d84e2;
+    transform: translateY(-5px);
+}
+
+.copyright {
+    color: #aab0c3;
+    font-size: 0.9rem;
+}
+
+@media (max-width: 768px) {
+    .footer-top {
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        padding: 40px 20px;
+    }
+    
+    .footer-bottom {
+        padding: 20px;
+    }
+}
+</style>
+
+<script type="text/javascript">
+// Function to toggle the main menu (hamburger)
+function toggleMenu() {
+    const menu = document.getElementById("header");
+    menu.classList.toggle("active");
+}
+
+// Function to toggle the dropdown on mobile devices
+function toggleDropdown(event) {
+    event.preventDefault(); // Prevents the default behavior of links (if clicked)
+    const dropdownContent = event.currentTarget.nextElementSibling;
+
+    // Toggle visibility of the dropdown menu
+    dropdownContent.classList.toggle('show');
+}
+
+// Add event listener to dropdown button to toggle dropdown on mobile
+document.querySelectorAll('.dropbtn').forEach(button => {
+    button.addEventListener('click', toggleDropdown);
+});
+
+// Optional: Close the dropdown when clicking anywhere outside the dropdown (to improve UX)
+document.addEventListener('click', function(event) {
+    const dropdownContent = document.querySelectorAll('.dropdown-content');
+
+    dropdownContent.forEach(dropdown => {
+        if (!dropdown.contains(event.target) && !event.target.closest('.dropdown')) {
+            dropdown.classList.remove('show');
+        }
+    });
+});
+
+// Check authentication state
+function checkAuth() {
+    const token = localStorage.getItem('token');
+    const loginNavItem = document.getElementById('loginNavItem');
+    const signupNavItem = document.getElementById('signupNavItem');
+    const profileNavItem = document.getElementById('profileNavItem');
+    const logoutNavItem = document.getElementById('logoutNavItem');
+    
+    if (token) {
+        // User is logged in
+        loginNavItem.style.display = 'none';
+        signupNavItem.style.display = 'none';
+        profileNavItem.style.display = 'block';
+        logoutNavItem.style.display = 'block';
+        
+        // Load profile data
+        loadProfileData();
+    } else {
+        // User is not logged in
+        loginNavItem.style.display = 'block';
+        signupNavItem.style.display = 'block';
+        profileNavItem.style.display = 'none';
+        logoutNavItem.style.display = 'none';
+        
+        // Show login required message
+        document.getElementById('profileData').innerHTML = `
+            <div class="auth-required">
+                <p>Please <a href="Login.html">login</a> to view your profile.</p>
+            </div>
+        `;
+    }
+}
+
+// Load user profile data
+async function loadProfileData() {
+    const token = localStorage.getItem('token');
+    const profileDataDiv = document.getElementById('profileData');
+    
+    if (!token) {
+        return;
+    }
+    
+    try {
+        const response = await fetch('/api/auth/user', {
+            method: 'GET',
+            headers: {
+                'x-auth-token': token
+            }
+        });
+        
+        if (response.ok) {
+            const userData = await response.json();
+            
+            // Display user data
+            profileDataDiv.innerHTML = `
+                <div class="profile-field">
+                    <label>Name:</label>
+                    <div class="value">${userData.name}</div>
+                </div>
+                <div class="profile-field">
+                    <label>Email:</label>
+                    <div class="value">${userData.email}</div>
+                </div>
+                <div class="profile-field">
+                    <label>Account Created:</label>
+                    <div class="value">${new Date(userData.date).toLocaleDateString()}</div>
+                </div>
+            `;
+            
+            // Load enrolled courses after profile data is loaded
+            loadEnrolledCourses();
+        } else {
+            // Token is invalid
+            localStorage.removeItem('token');
+            profileDataDiv.innerHTML = `
+                <div class="auth-required">
+                    <p>Session expired. Please <a href="Login.html">login</a> again.</p>
+                </div>
+            `;
+            
+            // Hide enrolled courses section
+            document.querySelector('.enrolled-courses-section').style.display = 'none';
+        }
+    } catch (err) {
+        console.error(err);
+        profileDataDiv.innerHTML = `
+            <div class="auth-required">
+                <p>Error loading profile. Please try again later.</p>
+            </div>
+        `;
+        
+        // Hide enrolled courses section
+        document.querySelector('.enrolled-courses-section').style.display = 'none';
+    }
+}
+
+// Load enrolled courses data
+async function loadEnrolledCourses() {
+    const token = localStorage.getItem('token');
+    const enrolledCoursesDiv = document.getElementById('enrolledCourses');
+    
+    if (!token) {
+        return;
+    }
+    
+    try {
+        // Get enrolled courses from localStorage
+        const enrolledCoursesJSON = localStorage.getItem('enrolledCourses');
+        
+        if (enrolledCoursesJSON) {
+            const coursesData = JSON.parse(enrolledCoursesJSON);
+            
+            if (coursesData.length > 0) {
+                // Display enrolled courses
+                let coursesHTML = '';
+                
+                coursesData.forEach(course => {
+                    const progressWidth = `${course.progress}%`;
+                    const isCompleted = course.progress === 100 || course.completed;
+                    
+                    coursesHTML += `
+                        <div class="course-card" id="course-${course.id}">
+                            <img src="${course.image}" alt="${course.title}" class="course-image">
+                            <button class="remove-course-btn" data-course-id="${course.id}" title="Remove Course">
+                                <i class="fa fa-times"></i>
+                            </button>
+                            <div class="course-details">
+                                <div class="course-category">${course.category}</div>
+                                <div class="course-title">${course.title}</div>
+                                <div class="course-progress">
+                                    <div class="progress-bar-bg">
+                                        <div class="progress-bar-fill" style="width: ${progressWidth}"></div>
+                                    </div>
+                                    <div class="progress-text">
+                                        <span>${course.lessonsCompleted}/${course.totalLessons} lessons</span>
+                                        <span>${course.progress}% complete</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="course-actions">
+                                <a href="${course.url}" class="course-btn continue-btn">
+                                    ${isCompleted ? 'Review Course' : 'Continue Learning'}
+                                </a>
+                                ${isCompleted ? 
+                                    `<a href="#/certificate/${course.id}" class="course-btn certificate-btn">Get Certificate</a>` : 
+                                    `<a href="#" class="course-btn">View Details</a>`
+                                }
+                            </div>
+                        </div>
+                    `;
+                });
+                
+                enrolledCoursesDiv.innerHTML = coursesHTML;
+            } else {
+                // No enrolled courses
+                enrolledCoursesDiv.innerHTML = `
+                    <div class="no-courses">
+                        <p>You haven't enrolled in any courses yet.</p>
+                        <a href="courses.html" class="action-btn">Browse Courses</a>
+                    </div>
+                `;
+            }
+        } else {
+            // No enrolled courses in localStorage
+            enrolledCoursesDiv.innerHTML = `
+                <div class="no-courses">
+                    <p>You haven't enrolled in any courses yet.</p>
+                    <a href="courses.html" class="action-btn">Browse Courses</a>
+                </div>
+            `;
+        }
+    } catch (err) {
+        console.error(err);
+        enrolledCoursesDiv.innerHTML = `
+            <div class="auth-required">
+                <p>Error loading enrolled courses. Please try again later.</p>
+            </div>
+        `;
+    }
+}
+
+// Handle logout
+document.getElementById('logoutBtn').addEventListener('click', function(e) {
+    e.preventDefault();
+    localStorage.removeItem('token');
+    window.location.href = '/home';
+});
+
+// Check authentication on page load
+window.addEventListener('DOMContentLoaded', () => {
+    checkAuth();
+    
+    // Event delegation for remove course buttons
+    document.getElementById('enrolledCourses').addEventListener('click', function(e) {
+        if (e.target.closest('.remove-course-btn')) {
+            const button = e.target.closest('.remove-course-btn');
+            const courseId = button.getAttribute('data-course-id');
+            removeCourse(courseId);
+        }
+    });
+});
+
+// Function to remove a course
+async function removeCourse(courseId) {
+    if (!confirm('Are you sure you want to remove this course? Your progress will be lost.')) {
+        return;
+    }
+    
+    const token = localStorage.getItem('token');
+    
+    if (!token) {
+        return;
+    }
+    
+    try {
+        // Get enrolled courses from localStorage
+        const enrolledCoursesJSON = localStorage.getItem('enrolledCourses');
+        
+        if (enrolledCoursesJSON) {
+            let enrolledCourses = JSON.parse(enrolledCoursesJSON);
+            
+            // Remove the course with the matching ID
+            enrolledCourses = enrolledCourses.filter(course => course.id !== parseInt(courseId));
+            
+            // Save the updated list back to localStorage
+            localStorage.setItem('enrolledCourses', JSON.stringify(enrolledCourses));
+            
+            // Remove the course element from the DOM
+            const courseElement = document.getElementById(`course-${courseId}`);
+            
+            // Add animation before removing
+            courseElement.style.transition = 'all 0.3s ease';
+            courseElement.style.transform = 'scale(0.8)';
+            courseElement.style.opacity = '0';
+            
+            setTimeout(() => {
+                courseElement.remove();
+                
+                // Check if there are no more courses
+                const remainingCourses = document.querySelectorAll('.course-card');
+                if (remainingCourses.length === 0) {
+                    document.getElementById('enrolledCourses').innerHTML = `
+                        <div class="no-courses">
+                            <p>You haven't enrolled in any courses yet.</p>
+                            <a href="courses.html" class="action-btn">Browse Courses</a>
+                        </div>
+                    `;
+                }
+                
+                // Show success message
+                const successMessage = document.createElement('div');
+                successMessage.className = 'alert-message success';
+                successMessage.innerHTML = `<i class="fa fa-check-circle"></i> Course removed successfully`;
+                document.querySelector('.profile-container').prepend(successMessage);
+                
+                // Remove the message after 3 seconds
+                setTimeout(() => {
+                    successMessage.style.opacity = '0';
+                    setTimeout(() => successMessage.remove(), 300);
+                }, 3000);
+            }, 300);
+        }
+    } catch (err) {
+        console.error(err);
+        // Show error message
+        const errorMessage = document.createElement('div');
+        errorMessage.className = 'alert-message error';
+        errorMessage.innerHTML = `<i class="fa fa-exclamation-circle"></i> Failed to remove course. Please try again later.`;
+        document.querySelector('.profile-container').prepend(errorMessage);
+        
+        // Remove the message after 3 seconds
+        setTimeout(() => {
+            errorMessage.style.opacity = '0';
+            setTimeout(() => errorMessage.remove(), 300);
+        }, 3000);
+    }
+}
+
+// Fixed Navbar JavaScript
+window.addEventListener('scroll', function() {
+    const nav = document.querySelector('nav');
+    if (window.scrollY > 10) {
+        nav.classList.add('sticky');
+    } else {
+        nav.classList.remove('sticky');
+    }
+});
+</script>
+</body>
+</html> 

@@ -30,19 +30,13 @@
           
           <!-- Navigation Menu -->
           <ul id="header">
-              <li><a href="https://elearning-web-com.onrender.com/home">Home</a></li>
-              <div class="dropdown">
-  <button class="dropbtn">Courses <i class="fa fa-sort"></i></button>
-  <div class="dropdown-content">
-      <a href="#">C Programming</a>
-      <a href="#">Python Programming</a>
-      <a href="/lectures/java.html">Java Programming</a>
-      <a href="courses.html">View More</a>
-  </div>
-              </div>
+            <li><a href="/home">Home</a></li>
+                  <li><a href="courses.html">Courses</a></li>
               <li><a href="about us.html">About Us</a></li>
-              <li><a href="Login.html">Login <i class="fa fa-sign-in"></i></a></li>
-              <li><a href="Signup.html">Signup <i class="fa fa-user"></i></a></li>
+              <li id="loginNavItem"><a href="Login.html">Login <i class="fa fa-sign-in"></i></a></li>
+              <li id="signupNavItem"><a href="Signup.html">Signup <i class="fa fa-user"></i></a></li>
+              <li id="profileNavItem" style="display: none;"><a href="profile.html">Profile <i class="fa fa-user"></i></a></li>
+              <li id="logoutNavItem" style="display: none;"><a href="#" id="logoutBtn">Logout <i class="fa fa-sign-out"></i></a></li>
           </ul>
       </nav>
   </div>
@@ -52,7 +46,7 @@
     <section class="login-section">
       <div class="login-container">
           <h2>Login</h2>
-          <form action="#" method="POST">
+          <form id="loginForm">
               <div class="input-field">
                   <label for="email">Email:</label>
                   <input type="email" id="email" name="email" placeholder="Enter your email" required>
@@ -62,6 +56,7 @@
                   <input type="password" id="password" name="password" placeholder="Enter your password" required>
               </div>
               <button type="submit" class="login-btn">Login</button>
+              <div id="loginMessage" class="message"></div>
               <div class="forgot-password">
                   <a href="forgot.html">Forgot Password?</a>
               </div>
@@ -75,6 +70,70 @@
     </div>
 
 
+
+<footer class="new-footer">
+    <div class="footer-top">
+        <div class="footer-logo">
+            <img src="/css/images/logo_round.png" alt="E-Learning Logo" height="60px">
+            <h3>E-Learning</h3>
+            <p>Empowering minds through quality education.</p>
+        </div>
+        
+        <div class="footer-links">
+            <h4>Quick Links</h4>
+            <ul>
+                <li><a href="E-learning.html">Home</a></li>
+                <li><a href="courses.html">Courses</a></li>
+                <li><a href="about us.html">About Us</a></li>
+                <li><a href="contactus.html">Contact</a></li>
+                <li><a href="Login.html">Login</a></li>
+                <li><a href="Signup.html">Signup</a></li>
+            </ul>
+        </div>
+        
+        <div class="footer-courses">
+            <h4>Popular Courses</h4>
+            <ul>
+                <li><a href="courses.html">Web Development</a></li>
+                <li><a href="courses.html">Python Programming</a></li>
+                <li><a href="courses.html">Data Science</a></li>
+                <li><a href="courses.html">UI/UX Design</a></li>
+                <li><a href="courses.html">Digital Marketing</a></li>
+            </ul>
+        </div>
+        
+        <div class="footer-contact">
+            <h4>Contact Us</h4>
+            <p><i class="fa fa-map-marker"></i> 123 Education Street, Learning City</p>
+            <p><i class="fa fa-phone"></i> +91 1234 567890</p>
+            <p><i class="fa fa-envelope"></i> info@elearning.com</p>
+        </div>
+        
+        <div class="footer-contact-form">
+            <h4>Quick Contact</h4>
+            <p>Have a question? Send us a message.</p>
+            <form class="contact-mini-form">
+                <input type="text" placeholder="Your Name" required>
+                <input type="text" placeholder="Email or Mobile" required>
+                <textarea placeholder="Your Message" rows="3" required></textarea>
+                <button type="submit" class="contact-submit-btn">Send <i class="fa fa-paper-plane"></i></button>
+            </form>
+        </div>
+    </div>
+    
+    <div class="footer-bottom">
+        <div class="social-icons">
+            <a href="#" class="social-icon"><i class="fa fa-facebook"></i></a>
+            <a href="#" class="social-icon"><i class="fa fa-twitter"></i></a>
+            <a href="https://www.instagram.com/jay_kumar_sharma_/" class="social-icon"><i class="fa fa-instagram"></i></a>
+            <a href="#" class="social-icon"><i class="fa fa-linkedin"></i></a>
+            <a href="#" class="social-icon"><i class="fa fa-youtube"></i></a>
+        </div>
+        <div class="copyright">
+            &copy; 2024 E-Learning. All Rights Reserved.
+        </div>
+    </div>
+</footer>
 
 <style>
   /* Login Section */
@@ -164,28 +223,207 @@
 .signup-link a:hover {
     text-decoration: underline;
 }
+
+.message {
+    margin-top: 15px;
+    padding: 10px;
+    border-radius: 4px;
+    text-align: center;
+}
+
+.success {
+    background-color: #d4edda;
+    color: #155724;
+    border: 1px solid #c3e6cb;
+}
+
+.error {
+    background-color: #f8d7da;
+    color: #721c24;
+    border: 1px solid #f5c6cb;
+}
+
+/* New Footer Styles */
+.new-footer {
+    background: linear-gradient(to right, #1a2036, #293145);
+    color: #fff;
+    padding: 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.footer-top {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 30px;
+    padding: 60px 40px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.footer-logo h3 {
+    margin: 15px 0 10px;
+    font-size: 1.5rem;
+    font-weight: 600;
+}
+
+.footer-logo p {
+    color: #aab0c3;
+    font-size: 0.9rem;
+    line-height: 1.5;
+    margin-top: 10px;
+}
+
+.footer-links h4, .footer-courses h4, .footer-contact h4, .footer-contact-form h4 {
+    color: #fff;
+    font-size: 1.2rem;
+    margin-bottom: 20px;
+    position: relative;
+    padding-bottom: 10px;
+}
+
+.footer-links h4:after, .footer-courses h4:after, .footer-contact h4:after, .footer-contact-form h4:after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 40px;
+    height: 2px;
+    background: #4d84e2;
+}
+
+.footer-links ul, .footer-courses ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.footer-links ul li, .footer-courses ul li {
+    margin-bottom: 12px;
+}
+
+.footer-links ul li a, .footer-courses ul li a {
+    color: #aab0c3;
+    text-decoration: none;
+    transition: color 0.3s;
+    font-size: 0.95rem;
+    display: block;
+    padding: 3px 0;
+}
+
+.footer-links ul li a:hover, .footer-courses ul li a:hover {
+    color: #4d84e2;
+    transform: translateX(5px);
+}
+
+.footer-contact p {
+    color: #aab0c3;
+    margin-bottom: 15px;
+    font-size: 0.95rem;
+    display: flex;
+    align-items: center;
+}
+
+.footer-contact p i {
+    margin-right: 10px;
+    color: #4d84e2;
+    width: 20px;
+    text-align: center;
+}
+
+.footer-contact-form p {
+    color: #aab0c3;
+    margin-bottom: 15px;
+    font-size: 0.95rem;
+    line-height: 1.5;
+}
+
+.contact-mini-form {
+    display: flex;
+    flex-direction: column;
+}
+
+.contact-mini-form input {
+    padding: 12px 15px;
+    border: none;
+    background: rgba(255, 255, 255, 0.1);
+    color: #fff;
+    border-radius: 4px;
+    margin-bottom: 10px;
+}
+
+.contact-mini-form textarea {
+    padding: 12px 15px;
+    border: none;
+    background: rgba(255, 255, 255, 0.1);
+    color: #fff;
+    border-radius: 4px;
+    margin-bottom: 10px;
+    rows: 3;
+}
+
+.contact-submit-btn {
+    background: #4d84e2;
+    color: white;
+    border: none;
+    padding: 12px 20px;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+.contact-submit-btn:hover {
+    background: #3a6ec3;
+}
+
+.footer-bottom {
+    background: rgba(0, 0, 0, 0.2);
+    padding: 20px 40px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+.social-icons {
+    display: flex;
+    gap: 15px;
+    margin-bottom: 15px;
+}
+
+.social-icon {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 40px;
+    height: 40px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 50%;
+    color: #fff;
+    transition: all 0.3s;
+}
+
+.social-icon:hover {
+    background: #4d84e2;
+    transform: translateY(-5px);
+}
+
+.copyright {
+    color: #aab0c3;
+    font-size: 0.9rem;
+}
+
+@media (max-width: 768px) {
+    .footer-top {
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        padding: 40px 20px;
+    }
+    
+    .footer-bottom {
+        padding: 20px;
+    }
+}
 </style>
 
-
-
-<footer class="footer">
-<div class="footer-links">
-  <a href="E-learning.html">Home</a>
-  <a href="#">Courses</a>
-  <a href="about us.html">About Us</a>
-  <a href="contactus.html">Contact</a>
-  <a href="Signup.html">Signup</a>
-</div>
-<div class="social-icons">
-  <a href="#" class="fa fa-facebook"></a>
-  <a href="#" class="fa fa-twitter"></a>
-  <a href="https://www.instagram.com/jay_kumar_sharma_/" class="fa fa-instagram"></a>
-  <a href="#" class="fa fa-linkedin"></a>
-</div>
-<div class="copyright">
-  &copy; 2024 E-Learning. All Rights Reserved.
-</div>
-</footer>
 
 
 <!-- -------------RIGHT CLICK DISABLE CODE  -->
@@ -201,6 +439,16 @@ document.addEventListener('contextmenu', function(event) {
 
 
   <script type="text/javascript">
+// Fixed Navbar JavaScript
+window.addEventListener('scroll', function() {
+    const nav = document.querySelector('nav');
+    if (window.scrollY > 10) {
+        nav.classList.add('sticky');
+    } else {
+        nav.classList.remove('sticky');
+    }
+});
+
 // Function to toggle the main menu (hamburger)
 function toggleMenu() {
     const menu = document.getElementById("header");
@@ -232,6 +480,99 @@ document.addEventListener('click', function(event) {
     });
 });
 
+// Check if user is already logged in, and redirect to profile page if true
+function checkLoginStatus() {
+    const token = localStorage.getItem('token');
+    if (token) {
+        // User is already logged in, redirect to profile page
+        window.location.href = 'profile.html';
+    }
+}
+
+// Authentication check functionality
+function checkAuth() {
+    const token = localStorage.getItem('token');
+    const loginNavItem = document.getElementById('loginNavItem');
+    const signupNavItem = document.getElementById('signupNavItem');
+    const profileNavItem = document.getElementById('profileNavItem');
+    const logoutNavItem = document.getElementById('logoutNavItem');
+    
+    if (token) {
+        // User is logged in
+        loginNavItem.style.display = 'none';
+        signupNavItem.style.display = 'none';
+        profileNavItem.style.display = 'block';
+        logoutNavItem.style.display = 'block';
+    } else {
+        // User is not logged in
+        loginNavItem.style.display = 'block';
+        signupNavItem.style.display = 'block';
+        profileNavItem.style.display = 'none';
+        logoutNavItem.style.display = 'none';
+    }
+}
+
+// Handle logout
+function setupLogout() {
+    const logoutBtn = document.getElementById('logoutBtn');
+    if (logoutBtn) {
+        logoutBtn.addEventListener('click', function(e) {
+            e.preventDefault();
+            localStorage.removeItem('token');
+            window.location.reload();
+        });
+    }
+}
+
+// Check authentication on page load
+window.addEventListener('DOMContentLoaded', function() {
+    checkLoginStatus(); // First check login status and redirect if needed
+    checkAuth();
+    setupLogout();
+});
+
+// Login Form Submission
+document.getElementById('loginForm').addEventListener('submit', async function(e) {
+    e.preventDefault();
+    
+    const email = document.getElementById('email').value;
+    const password = document.getElementById('password').value;
+    const messageDiv = document.getElementById('loginMessage');
+    
+    try {
+        const response = await fetch('/api/auth/login', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({ email, password })
+        });
+        
+        const data = await response.json();
+        
+        if (response.ok) {
+            // Save token to localStorage
+            localStorage.setItem('token', data.token);
+            
+            // Show success message
+            messageDiv.textContent = 'Login successful! Redirecting...';
+            messageDiv.className = 'message success';
+            
+            // Redirect to home page after 2 seconds
+            setTimeout(() => {
+                window.location.href = 'profile.html';
+            }, 2000);
+        } else {
+            // Show error message
+            messageDiv.textContent = data.msg || 'Login failed. Please try again.';
+            messageDiv.className = 'message error';
+        }
+    } catch (err) {
+        console.error(err);
+        messageDiv.textContent = 'An error occurred. Please try again later.';
+        messageDiv.className = 'message error';
+    }
+});
 
   </script>
 

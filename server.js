@@ -9,6 +9,9 @@ const PORT = process.env.PORT || 5000;
 // Debugging log to check MONGO_URI
 console.log("MongoDB URI:", process.env.MONGO_URI);
 
+// Init Middleware
+app.use(express.json({ extended: false }));
+
 async function main() {
     if (!process.env.MONGO_URI) {
         throw new Error("MONGO_URI is not defined in the environment variables.");
@@ -24,6 +27,9 @@ main().catch(err => console.error("MongoDB Connection Error:", err));
 
 app.use(express.static(path.join(__dirname, "VIEWS")));
 app.use(express.static(path.join(__dirname, "Public")));
+
+// Define Routes
+app.use('/api/auth', require('./routes/auth'));
 
 app.get("/", (req, res) => {
     res.send("App Is working");
